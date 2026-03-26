@@ -58,7 +58,7 @@ impl Plugin for Thunderforge {
     }
 
     fn editor(&mut self, _async_executor: AsyncExecutor<Self>) -> Option<Box<dyn Editor>> {
-        editor::create(self.params.clone())
+        editor::create_egui(self.params.clone(), self.processor.clone())
     }
 
     fn initialize(

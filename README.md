@@ -3,227 +3,329 @@
 **Professional Guitar Amp Simulator & Neural Modeler**  
 *Minimalist Code. Maximalist Sound.*
 
-[![Release](https://img.shields.io/github/v/release/Tehuti01/thunderforge?label=latest%20release&color=orange)](https://github.com/Tehuti01/thunderforge/releases)
-[![License](https://img.shields.io/github/license/Tehuti01/thunderforge?color=blue)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-macOS%2011%2B-lightgrey)](https://github.com/Tehuti01/thunderforge/releases)
-[![Plugin Format](https://img.shields.io/badge/format-VST3%20%7C%20CLAP-purple)](https://github.com/Tehuti01/thunderforge/releases)
+[![Release](https://img.shields.io/github/v/release/Tehuti01/thunderfpr?label=latest%20release&color=orange)](https://github.com/Tehuti01/thunderfpr/releases)
+[![License](https://img.shields.io/github/license/Tehuti01/thunderfpr?color=blue)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-macOS%2011%2B-lightgrey)](https://github.com/Tehuti01/thunderfpr/releases)
+[![Plugin Format](https://img.shields.io/badge/format-VST3-purple)](https://github.com/Tehuti01/thunderfpr/releases)
 
 ---
 
-## 🚀 Quick Download
+## 🚀 Quick Install
 
-### Latest Version: v1.0.0
+### Method 1: Homebrew (Recommended)
 
-**Download for macOS:**
-- [📦 LH Thunderforge v1.0.0 (VST3)](https://github.com/Tehuti01/thunderforge/releases/latest/download/LH-Thunderforge-macos.zip)
-- [🔌 LH Thunderforge v1.0.0 (CLAP)](https://github.com/Tehuti01/thunderforge/releases/latest/download/LH-Thunderforge-CLAP-macos.zip)
-
-**Auto-Install (Recommended):**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderforge/main/scripts/install.sh | bash
+# Install
+brew install Tehuti01/threwfpr/lh-thunderforge
+
+# Update
+brew update && brew upgrade lh-thunderforge
+
+# Uninstall
+brew uninstall lh-thunderforge
 ```
 
----
+### Method 2: Auto-Install Script
 
-## ✨ Features
-
-### 🎛️ Complete Signal Chain
-- **Noise Gate** - Eliminate unwanted noise
-- **Tube Screamer** - Classic overdrive pedal emulation
-- **Compressor** - Smooth dynamics and sustain
-- **8 Amp Models** - From clean to high gain:
-  - Plexi '68 (British clean)
-  - Plexi Bright (British bright)
-  - JCM800 (British high-gain)
-  - Recto Modern (American high-gain)
-  - AC30 Top Boost (British chime)
-  - Twin Clean (American clean)
-  - 5150 Red (Modern metal)
-  - Soldano (Smooth lead)
-- **3-Band EQ + Presence** - Sculpt your tone
-- **Cabinet Simulation** - 5 built-in IRs + custom IR support
-- **Effects** - Delay, Reverb, Chorus
-
-### 🎯 8 Factory Presets
-1. Clean Sparkle
-2. Highway Crunch
-3. British Invasion
-4. Metal Thunder
-5. Ambient Shimmer
-6. Smooth Lead
-7. Nu Metal Chunk
-8. Vox Jangle
-
-### 🔧 Technical Specs
-- **Plugin Formats:** VST3, CLAP
-- **Sample Rates:** 44.1kHz - 192kHz
-- **Buffer Sizes:** 32 - 4096 samples
-- **Latency:** < 5ms at 128 samples
-- **CPU Usage:** < 5% (simple presets), < 25% (full chain)
-- **Platform:** macOS 11+ (Apple Silicon & Intel)
-
----
-
-## 📥 Installation
-
-### Option 1: Auto-Install (Recommended)
-
-Open Terminal and run:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderforge/main/scripts/install.sh | bash
+# Install latest release
+curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderfpr/main/scripts/install.sh | bash
+
+# Update later
+curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderfpr/main/scripts/update.sh | bash
 ```
 
-This will:
-- Download the latest release
-- Install to correct plugin folder
-- Set up auto-update script
+### Method 3: Manual Download
 
-### Option 2: Manual Install
-
-1. **Download** the latest release from [Releases](https://github.com/Tehuti01/thunderforge/releases)
-2. **Extract** the ZIP file
-3. **Move** `LH Thunderforge.vst3` to:
+1. Download from [Releases](https://github.com/Tehuti01/thunderfpr/releases)
+2. Extract ZIP file
+3. Move `LH Thunderforge.vst3` to:
    ```
    ~/Library/Audio/Plug-Ins/VST3/
    ```
-4. **Restart** your DAW
+4. Restart your DAW
 
-### Option 3: Homebrew (Coming Soon)
+---
 
-```bash
-brew install --cask lh-thunderforge
+## 🎹 Usage in FL Studio
+
+### Setup (First Time)
+
+1. **Open FL Studio**
+2. Go to **Options** → **Manage plugins**
+3. Click **"Find installed plugins"** or add folder:
+   - Homebrew: `/opt/homebrew/lib/VST3/` (Apple Silicon)
+   - Manual: `~/Library/Audio/Plug-Ins/VST3/`
+4. Look for **"LH Thunderforge"** in the list
+5. Drag to Favorites (star icon)
+
+### Using with Guitar
+
+1. **Connect Guitar:**
+   - Audio interface → USB → Mac
+   - Or guitar → 1/4" adapter → Mac
+
+2. **Create Track:**
+   - Open Mixer (F9)
+   - Select empty insert
+   - Add **LH Thunderforge** in effects slot
+   - Set input to your guitar
+   - Enable **IN** (input monitoring)
+
+3. **Play!** 🎸
+
+### GUI Controls
+
+#### Top Panel - Effects Chain
+- **GATE** - Noise gate on/off (green LED)
+- **TS** - Tube Screamer overdrive (orange LED)
+- **COMP** - Compressor (blue LED)
+- **AMP** - Amp section (always on)
+- **CAB** - Cabinet sim (always on)
+- **DLY** - Delay (purple LED)
+- **REV** - Reverb (cyan LED)
+- **CHO** - Chorus (pink LED)
+
+#### Main Knobs
+- **GAIN** - Amp drive/distortion (orange ring)
+- **BASS** - Low frequencies (blue ring)
+- **MID** - Mid frequencies (blue ring)
+- **TREBLE** - High frequencies (blue ring)
+- **PRESENCE** - Ultra-high sparkle (blue ring)
+- **INPUT** - Input trim/gain (white ring)
+- **MASTER** - Output volume (red ring)
+
+#### Selectors
+- **AMP MODEL** - Choose amp type (8 models)
+- **CABINET** - Choose cabinet IR (5 + custom)
+
+#### Preset Navigator
+- **◀ ▶** - Arrow buttons to switch presets
+- **Preset Name** - Current preset display
+
+#### Right Panel
+- **VU Meter** - Real-time output level
+  - Green: Normal level
+  - Yellow: Hot signal
+  - Red: Clipping (reduce gain!)
+
+#### Bottom Bar
+- Sample rate & buffer size
+- CPU usage
+- Latency
+- Plugin version
+
+---
+
+## 🎛️ Quick Tone Presets
+
+### 🎵 Clean Sparkle (Preset 0)
+Perfect for jazz, country, clean rhythm
+```
+GAIN: 3.0 | BASS: 5 | MID: 6 | TREBLE: 7 | PRESENCE: 6
+AMP: Twin Clean | CAB: 2x12 Blue
+FX: Chorus ON, Reverb ON
+```
+
+### 🎸 Highway Crunch (Preset 1)
+Classic rock rhythm, AC/DC style
+```
+GAIN: 6.5 | BASS: 6 | MID: 7 | TREBLE: 6 | PRESENCE: 5
+AMP: Plexi Bright | CAB: 4x12 Greenback
+FX: TS ON for solo boost
+```
+
+### 🇬🇧 British Invasion (Preset 2)
+British high-gain, hard rock
+```
+GAIN: 7.5 | BASS: 5 | MID: 8 | TREBLE: 5.5 | PRESENCE: 6
+AMP: JCM800 | CAB: 4x12 T75
+FX: All OFF (raw amp tone)
+```
+
+### 🤘 Metal Thunder (Preset 3)
+Modern metal, high gain
+```
+GAIN: 8.5 | BASS: 4 | MID: 6 | TREBLE: 7 | PRESENCE: 7
+AMP: 5150 Red | CAB: 4x12 V30
+FX: GATE ON (essential!)
+```
+
+### 🌊 Ambient Shimmer (Preset 4)
+Atmospheric, post-rock, shoegaze
+```
+GAIN: 4.0 | BASS: 4 | MID: 5 | TREBLE: 7 | PRESENCE: 8
+AMP: AC30 Top | CAB: 1x12 Open
+FX: Chorus ON, Delay ON, Reverb ON
+```
+
+### 🎶 Smooth Lead (Preset 5)
+Creamy sustain for solos
+```
+GAIN: 7.0 | BASS: 5 | MID: 7 | TREBLE: 5 | PRESENCE: 4
+AMP: Soldano | CAB: 4x12 Greenback
+FX: Delay ON (375ms), Reverb ON
+```
+
+### 🎚️ Nu Metal Chunk (Preset 6)
+Drop-tuned aggression
+```
+GAIN: 8.0 | BASS: 5 | MID: 5 | TREBLE: 7 | PRESENCE: 6
+AMP: Recto Modern | CAB: 4x12 V30
+FX: GATE ON, COMP ON
+```
+
+### ✨ Vox Jangle (Preset 7)
+Chimey British cleans
+```
+GAIN: 5.0 | BASS: 4 | MID: 6 | TREBLE: 8 | PRESENCE: 7
+AMP: AC30 Top | CAB: 2x12 Blue
+FX: Chorus ON (subtle), Spring Reverb
 ```
 
 ---
 
-## 🎹 Usage
+## 🔧 Commands Reference
 
-### In FL Studio
-1. Open FL Studio
-2. **Options** → **Manage plugins**
-3. Click **"Find installed plugins"**
-4. Look for **"LH Thunderforge"**
-5. Drag to mixer track with guitar input
-6. Enable **"IN"** (input monitoring)
-7. Play guitar! 🎸
-
-### In Logic Pro / GarageBand
-1. Create a Software Instrument track
-2. Open Smart Controls
-3. In the plugin slots, select **LH Thunderforge**
-4. Enable input monitoring
-5. Play!
-
-### In Ableton Live
-1. Open Live's Browser
-2. Go to **Audio Effects** → **VST3**
-3. Drag **LH Thunderforge** to a track
-4. Enable monitoring
-5. Play!
-
----
-
-## 🔄 Auto-Update
-
-The plugin includes an auto-update script. To check for updates:
-
+### Installation
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderforge/main/scripts/update.sh | bash
+# Homebrew install
+brew install Tehuti01/threwfpr/lh-thunderforge
+
+# Auto-install script
+curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderfpr/main/scripts/install.sh | bash
 ```
 
-This will:
-- Check for new releases on GitHub
-- Download if update available
-- Install automatically
-- Backup old version
-
-### Enable Auto-Update Notifications
-
-Add to your crontab (check weekly):
+### Updates
 ```bash
-crontab -e
-# Add this line:
-0 12 * * 0 curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderforge/main/scripts/update.sh | bash
+# Homebrew update
+brew update && brew upgrade lh-thunderforge
+
+# Auto-update script
+curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderfpr/main/scripts/update.sh | bash
 ```
 
----
-
-## 🎛️ Quick Tone Guide
-
-### Clean Tone
-```
-GAIN: 3 | BASS: 5 | MID: 6 | TREBLE: 7 | CAB: 2x12 Blue
-```
-
-### Classic Rock
-```
-GAIN: 7 | BASS: 6 | MID: 7 | TREBLE: 6 | CAB: 4x12 Greenback
-```
-
-### High Gain Metal
-```
-GAIN: 9 | BASS: 4 | MID: 6 | TREBLE: 7 | CAB: 4x12 V30 | GATE: ON
-```
-
----
-
-## 🛠️ Building from Source
-
-### Requirements
-- Rust 1.70+ (`rustup install stable`)
-- macOS 11+
-
-### Build Commands
-
+### Build from Source
 ```bash
-# Clone the repository
-git clone https://github.com/Tehuti01/thunderforge.git
-cd thunderforge
+# Clone
+git clone https://github.com/Tehuti01/thunderfpr.git
+cd thunderfpr
 
 # Build release
 cargo build --release
 
-# Bundle VST3
-./scripts/build.sh
+# Bundle
+./scripts/release.sh v1.0.0
+```
 
-# Run tests
-cargo test
+### Uninstall
+```bash
+# Homebrew
+brew uninstall lh-thunderforge
+
+# Manual
+rm -rf ~/Library/Audio/Plug-Ins/VST3/"LH Thunderforge.vst3"
 ```
 
 ---
 
-## 📝 Changelog
+## 📦 Features
 
-### v1.0.0 (March 2026)
-- ✨ Initial release
-- 🎸 8 amp models
-- 📦 5 cabinet IRs
-- 🎛️ 8 factory presets
-- 🔌 VST3 and CLAP support
-- 🔄 Auto-update system
+### 8 Amp Models
+- **Plexi '68** - British clean (JTM45 style)
+- **Plexi Bright** - British bright channel
+- **JCM800** - British high-gain legend
+- **Recto Modern** - American high-gain beast
+- **AC30 Top Boost** - British chime machine
+- **Twin Clean** - American pristine clean
+- **5150 Red** - Modern metal monster
+- **Soldano** - Smooth high-gain lead
 
-### Coming Soon
-- [ ] Windows version
-- [ ] Linux version
-- [ ] MIDI CC support
-- [ ] Preset browser UI
-- [ ] More cabinet IRs
-- [ ] Neural amp model support (NAM)
+### 5 Cabinet IRs
+- **4x12 Greenback** - Marshall 1960A vintage
+- **4x12 V30** - Modern rock standard
+- **2x12 Blue** - Fender-style sparkle
+- **1x12 Open** - Vintage combo warmth
+- **4x12 T75** - High-gain punch
+
+### Effects Chain
+- Noise Gate (threshold, attack, hold, release)
+- Tube Screamer (drive, tone, level)
+- Compressor (threshold, ratio, attack, release, makeup)
+- Delay (time, feedback, mix, sync)
+- Reverb (size, decay, damping, predelay, mix)
+- Chorus (rate, depth, mix)
+
+### Technical Specs
+- **Formats:** VST3
+- **Sample Rates:** 44.1 - 192 kHz
+- **Buffer Sizes:** 32 - 4096 samples
+- **Latency:** < 5ms at 128 samples
+- **CPU:** < 5% (clean), < 25% (full chain)
+- **Platform:** macOS 11+ (Apple Silicon & Intel)
 
 ---
 
-## 🤝 Testing & Feedback
+## 🎨 GUI Features
 
-This plugin is in **beta testing**. If you find bugs or have suggestions:
+- ✨ **Beautiful Skeuomorphic Design** - Realistic knobs with metallic finish
+- 🎛️ **270° Knob Rotation** - Precise control with visual feedback
+- 💡 **LED Indicators** - Color-coded effect status
+- 📊 **Real-time VU Meter** - Green/Yellow/Red level monitoring
+- 🎚️ **Preset Browser** - Arrow navigation between 8 presets
+- 🔄 **Live Updates** - Change settings while playing, no audio interruption
+- 🌈 **Color-Coded Rings** - Easy identification of knob functions
+- 💻 **Retina Display** - Crisp rendering on all Mac displays
 
-1. **Report Issues:** [GitHub Issues](https://github.com/Tehuti01/thunderforge/issues)
-2. **Discussions:** [GitHub Discussions](https://github.com/Tehuti01/thunderforge/discussions)
+---
+
+## 🐛 Troubleshooting
+
+### Plugin Not Showing in FL Studio?
+```bash
+# Rescan plugins
+FL Studio → Options → Manage plugins → Scan
+
+# Check installation location
+ls ~/Library/Audio/Plug-Ins/VST3/
+ls /opt/homebrew/lib/VST3/  # Homebrew location
+```
+
+### High Latency?
+- Reduce buffer size: **Options** → **Audio Settings** → Buffer Size: **128** or **256**
+- Close other applications
+- Use audio interface instead of built-in audio
+
+### No Sound?
+- Check guitar is plugged in
+- Enable **IN** button on mixer track
+- Check **MASTER** volume in plugin
+- Verify audio interface selected in FL Studio
+
+### Crashing?
+- Update to latest version
+- Check DAW is 64-bit
+- Try larger buffer size (256 or 512)
+- Report issue on GitHub
+
+---
+
+## 📖 Documentation
+
+- `QUICK_START.md` - Quick start guide
+- `FL_STUDIO_SETUP.md` - Detailed FL Studio setup
+- `INSTALLATION.md` - Installation troubleshooting
+- `CHANGELOG.md` - Version history
+
+---
+
+## 🤝 Contributing
+
+Found a bug or want a feature?
+
+1. **Issues:** [GitHub Issues](https://github.com/Tehuti01/thunderfpr/issues)
+2. **Discussions:** [GitHub Discussions](https://github.com/Tehuti01/thunderfpr/discussions)
 3. **Email:** tehuti01@example.com
-
-### Known Beta Testers
-- Add your friends here!
-- @friend1
-- @friend2
 
 ---
 
@@ -236,17 +338,9 @@ GPL-3.0-or-later - See [LICENSE](LICENSE) for details
 ## 🙏 Credits
 
 **Developer:** Lukas Hansen / Stradego Capital  
-**Framework:** [nih-plug](https://github.com/robbert-vdh/nih-plug)  
+**Framework:** [nih-plug](https://github.com/robbert-vdh/nih-plug) + [nih-plug-egui](https://github.com/robbert-vdh/nih-plug)  
 **DSP:** Custom implementation  
-**Design:** THUNDERFORGE specification v3.0
-
----
-
-## 📞 Support
-
-- **Documentation:** See `QUICK_START.md` and `FL_STUDIO_SETUP.md`
-- **Issues:** [GitHub Issues](https://github.com/Tehuti01/thunderforge/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/Tehuti01/thunderforge/discussions)
+**GUI:** Egui immediate mode
 
 ---
 
@@ -256,6 +350,18 @@ GPL-3.0-or-later - See [LICENSE](LICENSE) for details
 
 Made with ❤️ for guitar players
 
-[⬇️ Download](https://github.com/Tehuti01/thunderforge/releases) • [📖 Docs](./QUICK_START.md) • [💬 Discussions](https://github.com/Tehuti01/thunderforge/discussions)
+[⬇️ Download](https://github.com/Tehuti01/thunderfpr/releases) • [📖 Docs](#-usage-in-fl-studio) • [💬 Discussions](https://github.com/Tehuti01/thunderfpr/discussions)
+
+### Quick Commands
+```bash
+# Install
+brew install Tehuti01/threwfpr/lh-thunderforge
+
+# Update
+brew update && brew upgrade lh-thunderforge
+
+# Or use auto-installer
+curl -fsSL https://raw.githubusercontent.com/Tehuti01/thunderfpr/main/scripts/install.sh | bash
+```
 
 </div>
