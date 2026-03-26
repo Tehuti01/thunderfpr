@@ -9,20 +9,30 @@ Cargo.lock
 .AppleDouble
 .LSOverride
 
-# Audio demo files
-demo_output/
-
-# Build artifacts
-*.vst3/Contents/MacOS/*
-*.clap/Contents/MacOS/*
+# Build artifacts (keep source, not bundles)
+build/*.zip
+build/release/*.vst3/
+build/release/*.clap/
 
 # IDE
 .idea/
 .vscode/
+.qwen/
+.claude/
 *.swp
 *.swo
 *~
 
-# Test files
+# Test/Demo files
+demo_output/
 *.wav
+
+# Development
 cabinets/*.wav
+presets/*.json
+models/*.nam
+
+# Documentation drafts
+*-draft.md
+*.tmp
+
