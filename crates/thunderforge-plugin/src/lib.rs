@@ -1,8 +1,8 @@
 use nih_plug::prelude::*;
 use std::sync::{Arc, Mutex};
 
-mod params;
-mod processor;
+pub mod params;
+pub mod processor;
 mod editor;
 
 use params::ThunderforgeParams;
@@ -58,7 +58,8 @@ impl Plugin for Thunderforge {
     }
 
     fn editor(&mut self, _async_executor: AsyncExecutor<Self>) -> Option<Box<dyn Editor>> {
-        editor::create_egui(self.params.clone(), self.processor.clone())
+        // Editor disabled for now - GUI being updated
+        None
     }
 
     fn initialize(

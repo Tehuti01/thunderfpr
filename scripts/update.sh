@@ -12,7 +12,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 # Configuration
-REPO="Tehuti01/thunderforge"
+REPO="Tehuti01/thunderfpr"
 PLUGIN_NAME="LH Thunderforge"
 VST3_DIR="$HOME/Library/Audio/Plug-Ins/VST3/LH Thunderforge.vst3"
 CLAP_DIR="$HOME/Library/Audio/Plug-Ins/CLAP/LH Thunderforge.clap"

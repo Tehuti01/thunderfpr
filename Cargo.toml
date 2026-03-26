@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/thunderforge-core", "crates/thunderforge-plugin"]
+members = ["crates/thunderforge-core", "crates/thunderforge-plugin", "crates/thunderforge-standalone"]
 resolver = "2"
 
 [workspace.package]

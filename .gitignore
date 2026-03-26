@@ -11,8 +11,10 @@ Cargo.lock
 
 # Build artifacts (keep source, not bundles)
 build/*.zip
-build/release/*.vst3/
-build/release/*.clap/
+build/*.vst3/
+build/*.clap/
+build/LH-Thunderforge-Standalone
+build/release/
 
 # IDE
 .idea/

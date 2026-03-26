@@ -1,0 +1,16 @@
+[package]
+name = "thunderforge-standalone"
+version = "1.0.0"
+edition = "2021"
+description = "Standalone host for LH Thunderforge - Test without DAW"
+
+[dependencies]
+thunderforge-core = { path = "../thunderforge-core" }
+thunderforge-plugin = { path = "../thunderforge-plugin" }
+cpal = "0.15"
+nih_plug_egui = { git = "https://github.com/robbert-vdh/nih-plug.git" }
+egui = "0.24"
+eframe = "0.24"
+atomic_float = "1.0"
+log = "0.4"
+env_logger = "0.10"
