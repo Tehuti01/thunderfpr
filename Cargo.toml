@@ -1,0 +1,26 @@
+[workspace]
+members = ["crates/thunderforge-core", "crates/thunderforge-plugin"]
+resolver = "2"
+
+[workspace.package]
+version = "1.0.0"
+authors = ["Lukas Hansen <lukas@stradego.capital>"]
+edition = "2021"
+license = "GPL-3.0-or-later"
+
+[workspace.dependencies]
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git", features = ["assert_process_allocs"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rustfft = "6"
+crossbeam-channel = "0.5"
+atomic_float = "1.0"
+log = "0.4"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+
+[profile.dev]
+opt-level = 1

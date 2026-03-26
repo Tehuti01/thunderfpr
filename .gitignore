@@ -1,0 +1,28 @@
+# Rust
+/target/
+**/*.rs.bk
+*.pdb
+Cargo.lock
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Audio demo files
+demo_output/
+
+# Build artifacts
+*.vst3/Contents/MacOS/*
+*.clap/Contents/MacOS/*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Test files
+*.wav
+cabinets/*.wav

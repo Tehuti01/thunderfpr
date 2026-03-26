@@ -1,0 +1,537 @@
+/* LH Thunderforge - Main Styles */
+/* Professional-Grade Guitar Amp Simulator UI */
+
+:root {
+    /* Color Palette - The Thunderforge Palette */
+    --color-abyss: #050507;
+    --color-deep-navy: #0a0e1a;
+    --color-charcoal-panel: #141820;
+    --color-steel-panel: #1e232e;
+    --color-slate: #2a303d;
+    --color-tolex-black: #0d0d0f;
+    --color-marshall-gold: #c8a84e;
+    --color-bright-chrome: #e8edf5;
+    --color-brushed-steel: #8892a4;
+    --color-dark-steel: #3a4050;
+    --color-amber-gold: #ffb000;
+    --color-signal-cyan: #06b6d4;
+    --color-tube-green: #00ff78;
+    --color-redline: #ff3344;
+    --color-valve-orange: #ff8800;
+    --color-soft-white: #dce6f0;
+    --color-steel-blue: #6488b4;
+    --color-dim-steel: #3e4a5c;
+    --color-lcd-green: #00ff78;
+    --color-lcd-amber: #ffb000;
+    
+    /* Golden Ratio Scale */
+    --phi: 1.618033988749895;
+    --phi-0: 3.77px;
+    --phi-1: 6.10px;
+    --phi-2: 9.87px;
+    --phi-3: 15.97px;
+    --phi-4: 25.83px;
+    --phi-5: 41.78px;
+    --phi-6: 67.58px;
+    --phi-7: 109.31px;
+    --phi-8: 176.81px;
+    
+    /* Type Scale */
+    --type-3xs: 7.64px;
+    --type-2xs: 9.33px;
+    --type-xs: 12.36px;
+    --type-sm: 15.10px;
+    --type-base: 20.00px;
+    --type-lg: 24.36px;
+    --type-xl: 32.36px;
+    --type-2xl: 39.42px;
+    --type-3xl: 52.36px;
+    --type-4xl: 63.82px;
+    --type-5xl: 84.72px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--color-abyss);
+    color: var(--color-soft-white);
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.plugin-container {
+    width: 1200px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, 
+        var(--color-deep-navy) 0%, 
+        var(--color-charcoal-panel) 50%,
+        var(--color-deep-navy) 100%);
+    position: relative;
+}
+
+/* ==================== SIGNAL CHAIN BAR ==================== */
+.signal-chain-bar {
+    height: 144px;
+    background: linear-gradient(180deg,
+        var(--color-steel-panel) 0%,
+        var(--color-charcoal-panel) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: var(--phi-3);
+    display: flex;
+    flex-direction: column;
+}
+
+.signal-chain-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-2xs);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-steel-blue);
+    margin-bottom: var(--phi-2);
+}
+
+.pedal-chain {
+    display: flex;
+    align-items: center;
+    gap: var(--phi-3);
+    flex: 1;
+}
+
+.pedal-block {
+    width: 89px;
+    height: 89px;
+    background: rgba(20, 24, 32, 0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.15s ease;
+}
+
+.pedal-block:hover {
+    border-color: rgba(100, 180, 255, 0.3);
+    box-shadow: 0 0 12px rgba(100, 180, 255, 0.15);
+}
+
+.pedal-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-2xs);
+    letter-spacing: 0.25em;
+    color: var(--color-steel-blue);
+    margin-bottom: var(--phi-1);
+}
+
+.connection-arrow {
+    color: rgba(255, 255, 255, 0.08);
+    font-size: var(--type-lg);
+}
+
+.amp-block, .cab-block {
+    background: rgba(30, 35, 46, 0.9);
+    border-color: rgba(200, 168, 78, 0.2);
+}
+
+/* Stomp Switch */
+.stomp-switch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+        var(--color-brushed-steel) 0%,
+        var(--color-dark-steel) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.1s ease;
+    margin-top: var(--phi-1);
+}
+
+.stomp-switch:hover {
+    background: linear-gradient(135deg,
+        var(--color-bright-chrome) 0%,
+        var(--color-brushed-steel) 100%);
+}
+
+.stomp-switch:active {
+    transform: translateY(2px);
+}
+
+.stomp-switch.active {
+    background: linear-gradient(135deg,
+        var(--color-amber-gold) 0%,
+        var(--color-valve-orange) 100%);
+    box-shadow: 0 0 8px rgba(255, 176, 0, 0.4);
+}
+
+/* ==================== MAIN CONTENT AREA ==================== */
+.main-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+/* ==================== AMP FACE (THE MONOLITH) ==================== */
+.amp-face {
+    flex: 1;
+    background: var(--color-tolex-black);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tolex Texture */
+.amp-face::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.02) 0px,
+            rgba(0, 0, 0, 0.02) 2px,
+            transparent 2px,
+            transparent 4px
+        );
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.amp-chassis {
+    background: linear-gradient(135deg,
+        var(--color-steel-panel) 0%,
+        var(--color-charcoal-panel) 50%,
+        var(--color-dark-steel) 100%);
+    border-radius: 4px;
+    padding: var(--phi-6);
+    box-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 12px 24px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.amp-controls-row1,
+.amp-controls-row2 {
+    display: flex;
+    align-items: center;
+    gap: var(--phi-5);
+    margin-bottom: var(--phi-4);
+}
+
+.amp-controls-row2 {
+    margin-bottom: 0;
+}
+
+.knob-group {
+    display: flex;
+    gap: var(--phi-4);
+}
+
+.eq-section {
+    padding-left: var(--phi-5);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.knob-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--phi-2);
+}
+
+.knob-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-2xs);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-steel-blue);
+}
+
+.knob-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-xs);
+    color: var(--color-amber-gold);
+    min-height: var(--type-xs);
+}
+
+/* Model Select */
+.model-select-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--phi-2);
+}
+
+.lcd-display {
+    width: 120px;
+    height: 40px;
+    background: #080c08;
+    border: 2px solid #1a2a1a;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.5),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.lcd-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-sm);
+    font-weight: 700;
+    color: var(--color-lcd-green);
+    text-shadow: 0 0 8px rgba(0, 255, 120, 0.6);
+    letter-spacing: 0.1em;
+}
+
+.model-select {
+    background: var(--color-charcoal-panel);
+    color: var(--color-soft-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--phi-1) var(--phi-3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-2xs);
+    border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+}
+
+.model-select:focus {
+    border-color: var(--color-amber-gold);
+}
+
+.model-select option {
+    background: var(--color-charcoal-panel);
+    color: var(--color-soft-white);
+}
+
+/* Power LED */
+.power-led-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--phi-1);
+    padding-left: var(--phi-5);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Amp Logo */
+.amp-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--phi-3);
+    margin-top: var(--phi-5);
+    position: relative;
+    z-index: 1;
+}
+
+.logo-l, .logo-h {
+    font-size: var(--type-3xl);
+    font-weight: 900;
+    background: linear-gradient(135deg,
+        var(--color-bright-chrome) 0%,
+        var(--color-marshall-gold) 50%,
+        var(--color-bright-chrome) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.04em;
+}
+
+.logo-name {
+    font-size: var(--type-4xl);
+    font-weight: 900;
+    background: linear-gradient(135deg,
+        var(--color-marshall-gold) 0%,
+        var(--color-amber-gold) 50%,
+        var(--color-marshall-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.25em;
+}
+
+/* ==================== SIDE PANEL ==================== */
+.side-panel {
+    width: 380px;
+    background: linear-gradient(180deg,
+        var(--color-steel-panel) 0%,
+        var(--color-charcoal-panel) 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    padding: var(--phi-4);
+    gap: var(--phi-4);
+}
+
+.oled-display {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #000000;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+#waveform-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.display-label {
+    position: absolute;
+    bottom: var(--phi-2);
+    left: var(--phi-3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-3xs);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-dim-steel);
+}
+
+.model-info-panel {
+    background: rgba(20, 24, 32, 0.5);
+    border-radius: 4px;
+    padding: var(--phi-3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.info-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-2xs);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-steel-blue);
+    margin-bottom: var(--phi-2);
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--phi-1);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--type-xs);
+}
+
+.info-label {
+    color: var(--color-dim-steel);
+}
+
+.info-value {
+    color: var(--color-soft-white);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.preset-browser {
+    flex: 1;
+    background: rgba(20, 24, 32, 0.5);
+    border-radius: 4px;
+    padding: var(--phi-3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+.browser-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-2xs);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-steel-blue);
+    margin-bottom: var(--phi-2);
+}
+
+.preset-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--phi-1);
+}
+
+.preset-item {
+    padding: var(--phi-2) var(--phi-3);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: var(--type-sm);
+    color: var(--color-soft-white);
+}
+
+.preset-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.preset-item.selected {
+    background: rgba(255, 176, 0, 0.15);
+    border: 1px solid rgba(255, 176, 0, 0.3);
+    color: var(--color-amber-gold);
+}
+
+/* ==================== STATUS BAR ==================== */
+.status-bar {
+    height: 34px;
+    background: #080c08;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--phi-4);
+}
+
+.status-left, .status-right {
+    display: flex;
+    gap: var(--phi-4);
+}
+
+.status-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: var(--type-2xs);
+    letter-spacing: 0.15em;
+    color: var(--color-lcd-green);
+    text-shadow: 0 0 4px rgba(0, 255, 120, 0.3);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-dark-steel);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-brushed-steel);
+}

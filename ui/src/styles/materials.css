@@ -1,0 +1,183 @@
+/* LH Thunderforge - Materials & Textures */
+
+/* ==================== BRUSHED METAL ==================== */
+.material-brushed-metal {
+    background: linear-gradient(135deg,
+        #373c46 0%,
+        #232830 25%,
+        #323842 50%,
+        #272c35 75%,
+        #3a3f49 100%);
+    position: relative;
+}
+
+.material-brushed-metal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.02) 0px,
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ==================== MACHINED TITANIUM ==================== */
+.material-titanium {
+    background: radial-gradient(
+        ellipse at 30% 20%,
+        #4a5060 0%,
+        #2d323a 40%,
+        #1a1e26 100%
+    );
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== FROSTED GLASS ==================== */
+.material-frosted-glass {
+    background: rgba(10, 14, 26, 0.75);
+    backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================== AMP TOLEX ==================== */
+.material-tolex {
+    background-color: #0d0d0f;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.05) 0px,
+            rgba(0, 0, 0, 0.05) 2px,
+            transparent 2px,
+            transparent 4px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 2px,
+            transparent 2px,
+            transparent 4px
+        );
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.5),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ==================== CHROME BEZEL ==================== */
+.material-chrome {
+    background: linear-gradient(
+        135deg,
+        #3a4050 0%,
+        #e8edf5 25%,
+        #8892a4 50%,
+        #e8edf5 75%,
+        #3a4050 100%
+    );
+    background-size: 200% 200%;
+    box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== NOISE GRAIN OVERLAY ==================== */
+.noise-grain {
+    position: relative;
+}
+
+.noise-grain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* ==================== CHAMFERED EDGE ==================== */
+.edge-chamfered {
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.edge-chamfered-top {
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== RECESSED PANEL ==================== */
+.panel-recessed {
+    background: rgba(10, 14, 26, 0.5);
+    box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.4),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ==================== RAISED PANEL ==================== */
+.panel-raised {
+    background: linear-gradient(180deg,
+        #2a303d 0%,
+        #1e232e 100%);
+    box-shadow: 
+        0 1px 0 rgba(255, 255, 255, 0.1),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ==================== GLOWING BORDER ==================== */
+.border-glow {
+    border: 1px solid rgba(100, 180, 255, 0.08);
+    transition: all 0.15s ease;
+}
+
+.border-glow:hover {
+    border-color: rgba(100, 180, 255, 0.3);
+    box-shadow: 0 0 12px rgba(100, 180, 255, 0.15);
+}
+
+.border-glow-active {
+    border: 1px solid rgba(255, 176, 0, 0.3);
+    box-shadow: 
+        0 0 8px rgba(255, 176, 0, 0.2),
+        inset 0 0 8px rgba(255, 176, 0, 0.05);
+}
+
+/* ==================== SHADOW LAYERS ==================== */
+.shadow-ambient {
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-medium {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.shadow-close {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-layered {
+    box-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 12px 24px rgba(0, 0, 0, 0.15),
+        0 24px 48px rgba(0, 0, 0, 0.08);
+}
