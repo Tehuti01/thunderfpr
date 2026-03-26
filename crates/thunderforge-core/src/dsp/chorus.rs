@@ -9,8 +9,6 @@ pub struct Chorus {
     write_pos: usize,
     // LFO
     lfo_phase: f32,
-    lfo_rate: f32,
-    lfo_depth: f32,
     // Parameters
     rate: f32,
     depth: f32,
@@ -29,8 +27,6 @@ impl Chorus {
             buffer_r: vec![0.0; max_samples],
             write_pos: 0,
             lfo_phase: 0.0,
-            lfo_rate: 0.0,
-            lfo_depth: 0.0,
             rate: 1.0,
             depth: 0.5,
             mix: 0.5,

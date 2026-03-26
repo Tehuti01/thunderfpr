@@ -113,7 +113,7 @@ impl ThunderforgeProcessor {
     }
 
     /// Prepare processor for playback
-    pub fn prepare(&mut self, sample_rate: f32, max_buffer_size: usize) {
+    pub fn prepare(&mut self, sample_rate: f32, _max_buffer_size: usize) {
         self.sample_rate = sample_rate;
 
         // Initialize all DSP modules
@@ -233,7 +233,7 @@ impl ThunderforgeProcessor {
         self.update_parameters(params);
 
         let num_channels = buffer.channels();
-        let num_samples = buffer.samples() as usize;
+        let num_samples = buffer.samples();
 
         // Get raw buffer data as slices
         let channels = buffer.as_slice();

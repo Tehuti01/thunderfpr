@@ -99,7 +99,7 @@ impl Default for ModelWeights {
 /// 
 /// .nam files store weights as 32-bit floats in little-endian format
 pub fn parse_weights_bytes(bytes: &[u8]) -> Vec<f32> {
-    if bytes.len() % 4 != 0 {
+    if !bytes.len().is_multiple_of(4) {
         log::warn!("Weight data length is not a multiple of 4 bytes");
         return Vec::new();
     }

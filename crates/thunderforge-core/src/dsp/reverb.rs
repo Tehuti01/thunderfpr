@@ -93,13 +93,13 @@ impl FdnReverb {
         let comb_times = [29.7, 37.1, 41.3, 47.9, 53.2, 59.8, 67.3, 73.1];
         let ap_times = [5.0, 7.0, 9.0, 11.0];
 
-        for i in 0..8 {
-            let len = ms_to_samples(comb_times[i] * (self.size / 50.0), sr).max(1);
+        for (i, &t) in comb_times.iter().enumerate() {
+            let len = ms_to_samples(t * (self.size / 50.0), sr).max(1);
             self.comb_buffers[i] = vec![0.0; len];
             self.comb_positions[i] = 0;
         }
-        for i in 0..4 {
-            let len = ms_to_samples(ap_times[i], sr).max(1);
+        for (i, &t) in ap_times.iter().enumerate() {
+            let len = ms_to_samples(t, sr).max(1);
             self.ap_buffers[i] = vec![0.0; len];
             self.ap_positions[i] = 0;
         }
@@ -152,8 +152,8 @@ impl FdnReverb {
         // RT60 = -3.0 * delay / ln(gain)
         // gain = exp(-3.0 * delay / RT60)
         let comb_times = [29.7, 37.1, 41.3, 47.9, 53.2, 59.8, 67.3, 73.1];
-        for i in 0..8 {
-            let delay_sec = comb_times[i] / 1000.0 * (self.size / 50.0);
+        for (i, &t) in comb_times.iter().enumerate() {
+            let delay_sec = t / 1000.0 * (self.size / 50.0);
             self.comb_gains[i] = (-3.0 * delay_sec / self.decay).exp().clamp(0.0, 0.98);
         }
     }
@@ -222,17 +222,17 @@ impl FdnReverb {
 
         // Process comb filters (parallel)
         let mut comb_outputs = [0.0; 8];
-        for i in 0..8 {
-            comb_outputs[i] = self.comb_process(comb_sum * 0.125, i);
+        for (i, out) in comb_outputs.iter_mut().enumerate() {
+            *out = self.comb_process(comb_sum * 0.125, i);
         }
 
         // Hadamard mixing (simplified - just sum/difference)
         let mut mixed = [0.0; 8];
-        for i in 0..8 {
-            for j in 0..8 {
-                mixed[i] += self.hadamard[i][j] * comb_outputs[j];
+        for (i, m) in mixed.iter_mut().enumerate() {
+            for (j, &co) in comb_outputs.iter().enumerate() {
+                *m += self.hadamard[i][j] * co;
             }
-            mixed[i] *= 0.354; // 1/sqrt(8) for normalization
+            *m *= 0.354; // 1/sqrt(8) for normalization
         }
 
         // Process allpass filters (series) on first two outputs for L/R

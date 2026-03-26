@@ -275,6 +275,7 @@ pub struct ThunderforgeParams {
     pub chorus: ChorusParams,
 }
 
+#[allow(clippy::derivable_impls)]
 impl Default for ThunderforgeParams {
     fn default() -> Self {
         Self {

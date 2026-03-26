@@ -1,8 +1,8 @@
 class LhThunderforge < Formula
   desc "Professional Guitar Amp Simulator - VST3/CLAP Plugin for macOS"
   homepage "https://github.com/Tehuti01/thunderfpr"
-  url "https://github.com/Tehuti01/thunderfpr/releases/download/v1.0.0/LH-Thunderforge-v1.0.0-macos.zip"
-  sha256 "ffe92271c0daee1f3bce7b165e128b1c989312db4c954847dc2fdc65f1e6b5c1"
+  url "https://github.com/Tehuti01/thunderfpr/releases/download/v1.0.1/LH-Thunderforge-v1.0.0-macos.zip"
+  sha256 "45ed749e39f0eba08c1ee82ea6ea6eb2c018df9b1cc65408508c2bc8558f8f96"
   version "1.0.0"
 
   head "https://github.com/Tehuti01/thunderfpr.git", branch: "main"

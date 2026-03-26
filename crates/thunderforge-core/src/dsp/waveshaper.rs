@@ -135,7 +135,7 @@ impl PowerAmp {
         if abs_s > self.sag_envelope {
             self.sag_envelope = abs_s;
         } else {
-            self.sag_envelope = self.sag_envelope * self.sag_coeff;
+            self.sag_envelope *= self.sag_coeff;
         }
         let sag_gain = 1.0 - self.sag_envelope * self.sag_depth;
 

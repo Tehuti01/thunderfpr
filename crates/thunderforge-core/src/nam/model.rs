@@ -35,6 +35,7 @@ pub struct ModelConfig {
 /// NAM Model wrapper
 pub struct NamModel {
     metadata: Option<NamMetadata>,
+    #[allow(dead_code)] // reserved for inference engine implementation
     weights: Vec<f32>,
     loaded: bool,
     // Inference state would go here

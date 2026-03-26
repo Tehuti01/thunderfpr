@@ -29,7 +29,8 @@ impl Biquad {
         let a = (10.0_f64).powf(db_gain as f64 / 40.0);
         let w0 = 2.0 * std::f64::consts::PI * freq as f64 / sample_rate as f64;
         let cos_w0 = w0.cos();
-        let alpha = w0.sin() / 2.0 * ((a + 1.0 / a) * (1.0 / 1.0 - 1.0) + 2.0).sqrt();
+        // Shelf slope S=1.0 → (A + 1/A)*(1/S - 1) + 2 = 2 → alpha = sin(w0)/sqrt(2)
+        let alpha = w0.sin() / 2.0_f64.sqrt();
 
         let b0 =   a * ((a + 1.0) - (a - 1.0) * cos_w0 + 2.0 * a.sqrt() * alpha);
         let b1 = 2.0 * a * ((a - 1.0) - (a + 1.0) * cos_w0);
@@ -53,7 +54,8 @@ impl Biquad {
         let a = (10.0_f64).powf(db_gain as f64 / 40.0);
         let w0 = 2.0 * std::f64::consts::PI * freq as f64 / sample_rate as f64;
         let cos_w0 = w0.cos();
-        let alpha = w0.sin() / 2.0 * ((a + 1.0 / a) * (1.0 / 1.0 - 1.0) + 2.0).sqrt();
+        // Shelf slope S=1.0 → (A + 1/A)*(1/S - 1) + 2 = 2 → alpha = sin(w0)/sqrt(2)
+        let alpha = w0.sin() / 2.0_f64.sqrt();
 
         let b0 =   a * ((a + 1.0) + (a - 1.0) * cos_w0 + 2.0 * a.sqrt() * alpha);
         let b1 = -2.0 * a * ((a - 1.0) + (a + 1.0) * cos_w0);

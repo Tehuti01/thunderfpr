@@ -25,7 +25,8 @@ pub struct CabinetSim {
     // Bypass and mix
     mix: f32,
     bypass: bool,
-    // Current model index
+    // Current model index (tracked for future hot-swap support)
+    #[allow(dead_code)]
     current_model: usize,
 }
 
@@ -81,7 +82,7 @@ impl CabinetSim {
         
         // Get format info
         let channels = u16::from_le_bytes([header[22], header[23]]) as usize;
-        let sample_rate = u32::from_le_bytes([header[24], header[25], header[26], header[27]]);
+        let _sample_rate = u32::from_le_bytes([header[24], header[25], header[26], header[27]]);
         let bits_per_sample = u16::from_le_bytes([header[34], header[35]]);
         
         // Read data chunk
@@ -175,7 +176,7 @@ impl CabinetSim {
         }
 
         self.ir_data = ir_samples.to_vec();
-        self.num_partitions = (ir_samples.len() + self.partition_size - 1) / self.partition_size;
+        self.num_partitions = ir_samples.len().div_ceil(self.partition_size);
 
         // Compute frequency-domain IR (first partition)
         let fft_size = self.partition_size * 2;
@@ -264,7 +265,7 @@ impl CabinetSim {
         let mut mono_out = vec![0.0; input.len()];
         self.process_mono(input, &mut mono_out);
 
-        for (_i, &sample) in mono_out.iter().enumerate() {
+        for &sample in mono_out.iter() {
             output[0] = sample;
             output[1] = sample;
         }

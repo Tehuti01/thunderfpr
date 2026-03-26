@@ -1,6 +1,7 @@
 // Simple editor placeholder
 use nih_plug::prelude::*;
 
+#[allow(dead_code)]
 pub struct ThunderforgeEditor;
 
 impl Editor for ThunderforgeEditor {
@@ -14,6 +15,7 @@ impl Editor for ThunderforgeEditor {
     fn param_values_changed(&self) {}
 }
 
+#[allow(dead_code)]
 pub fn create_egui(
     _params: std::sync::Arc<crate::params::ThunderforgeParams>,
     _processor: std::sync::Arc<std::sync::Mutex<crate::processor::ThunderforgeProcessor>>,
